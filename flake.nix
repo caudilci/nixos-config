@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     niri.url = "github:niri-wm/niri";
-    noctalia.url = "github:noctaliashell/noctalia";
+    noctalia.url = "github:noctalia-dev/noctalia";
     amd-ai = {
       url = "github:noamsto/nix-amd-ai";
       flake = true;

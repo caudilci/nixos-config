@@ -17,7 +17,7 @@
   environment.systemPackages = with pkgs; [
     kitty fuzzel yazi micro vscode git gh librewolf firefox vesktop
     starship expressvpn keepassxc steam prismlauncher heroic
-    obs-studio godot freecad kicad xwayland-satellite
+    obs-studio godot freecad kicad xwayland-satellite greetd
   ];
 
   programs.firefox.enable = true;

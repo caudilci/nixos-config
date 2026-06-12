@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     niri.url = "github:niri-wm/niri";
-    amd-ai.url = "github:noamsto/nix-amd-ai";
+    amd-ai = {
+      url = "github:noamsto/nix-amd-ai";
+      flake = true;
+    };
   };
 
   outputs = { self, nixpkgs, niri, amd-ai, ... }: {
@@ -16,7 +19,6 @@
           nixpkgs.overlays = [
             amd-ai.overlays.default
             niri.overlays.default
-          ];
         }
 
         ./hosts/nixos/default.nix
@@ -25,7 +27,6 @@
         ./modules/desktop.nix
         ./modules/ai-stack.nix
         amd-ai.nixosModules.default
-        niri.nixosModules.niri
       ];
     };
   };

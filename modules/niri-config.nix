@@ -8,7 +8,7 @@
     }
 
     layer-rule {
-        match namespace="^quickshell___CODE_BLOCK_1___quot;
+        match namespace="^quickshell$"
         place-within-backdrop true
     }
 

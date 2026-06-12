@@ -1,5 +1,7 @@
 { config, pkgs, ... }: {
-  programs.niri.extraConfig = ''
+  # Instead of programs.niri.extraConfig (which is missing),
+  # we create the configuration file directly in /etc/niri/
+  environment.etc."niri/config.kdl".text = ''
     // --- Modern Niri Standards & DMS Defaults ---
 
     // Import DMS default configurations if they exist

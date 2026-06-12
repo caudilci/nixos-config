@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ./niri-config.nix ];
+  imports = [ ./niri-config.nix ./dms-greeter-config.nix ];
 
   programs.niri.enable = true;
 

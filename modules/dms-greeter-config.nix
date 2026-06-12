@@ -1,0 +1,21 @@
+{ config, pkgs, ... }: {
+  environment.etc."greetd/niri.kdl".text = ''
+    hotkey-overlay {
+        skip-at-startup
+    }
+
+    environment {
+        DMS_RUN_GREETER "1"
+    }
+
+    gestures {
+    hot-corners {
+        off
+    }
+    }
+
+    layout {
+    background-color "#000000"
+    }
+  '';
+}

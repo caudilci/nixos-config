@@ -50,4 +50,11 @@
     enableCalendarEvents = true;       # Calendar integration (khal)
     enableClipboardPaste = true;       # Pasting from the clipboard history (wtype)
   };
+
+  services.greetd.enable = true;
+
+  services.displayManager.dms-greeter = {
+    enable = true;
+    compositor.name = "niri";  # Or "hyprland" or "sway"
+  };
 }

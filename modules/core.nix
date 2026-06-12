@@ -33,11 +33,6 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "video" "render" ];
   };
 
-  services.displayManager.dms-greeter = {
-    enable = true;
-    compositor.name = "niri";  # Or "hyprland" or "sway"
-  };
-
   # --- System Services & Permissions ---
   virtualisation.docker.enable = true;
   nixpkgs.config.allowUnfree = true;

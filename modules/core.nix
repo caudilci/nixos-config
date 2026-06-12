@@ -2,6 +2,10 @@
   # --- System Basics ---
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  environment.variables = {
+    DMS_RUN_GREETER="1 dms run";
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 

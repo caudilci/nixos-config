@@ -1,23 +1,15 @@
 { config, pkgs, ... }: {
-  imports = [ ./niri-config.nix ]; # <--- Add this import
+  imports = [ ./niri-config.nix ];
 
   programs.niri.enable = true;
 
-  programs.dms-shell = {
-    enable = true;
-    systemd.enable = true;
-    systemd.restartIfChanged = true;
+  # REMOVED: All programs.dms-shell and services.displayManager.dms-greeter blocks
 
-    enableSystemMonitoring = true;
-    enableVPN = true;
-    enableDynamicTheming = true;
-    enableAudioWavelength = true;
-    enableCalendarEvents = true;
-  };
-
-  services.displayManager.dms-greeter = {
+  # ADDED: Noctalia v5 Configuration
+  programs.noctalia = {
     enable = true;
-    compositor.name = "niri";
+    # You can add specific noctalia options here if needed,
+    # but .enable is the primary switch for the NixOS module.
   };
 
   # Input Method (Fcitx5)
@@ -31,7 +23,6 @@
     };
   };
 
-  # General Desktop Apps
   environment.systemPackages = with pkgs; [
     kitty fuzzel yazi micro vscode git gh librewolf firefox vesktop
     spotify expressvpn keepassxc steam prismlauncher heroic
@@ -44,7 +35,6 @@
   programs.dsearch.enable = true;
   programs.coolercontrol.enable = true;
 
-  # Sound (Pipewire)
   services.pipewire = {
     enable = true;
     alsa.enable = true;

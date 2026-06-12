@@ -31,8 +31,8 @@
         ./modules/graphics.nix
         ./modules/desktop.nix
         ./modules/ai-stack.nix
+        ./modules/noctalia.nix
         amd-ai.nixosModules.default
-        noctalia.nixosModules.noctalia
       ];
     };
   };

@@ -29,7 +29,6 @@
         ./modules/desktop.nix
         ./modules/ai-stack.nix
         amd-ai.nixosModules.default
-        niri.nixosModules.niri
         noctalia.nixosModules.noctalia
       ];
     };

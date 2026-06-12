@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, niri, noctalia, amd-ai, ... }: {
+  outputs = inputs@{ self, nixpkgs, niri, noctalia, amd-ai, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };

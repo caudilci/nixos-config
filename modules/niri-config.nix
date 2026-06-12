@@ -1,61 +1,84 @@
 { config, pkgs, ... }: {
-  environment.etc."niri/config.kdl".text = ''
-
-    input {
-      keyboard { xkb_layout "us" }
-      touchpad { tap; natural-scroll; }
-    }
-
-    output "eDP-1" {
-      mode "1920x1080"
-      scale 1.0
-    }
+  home.file.".config/niri/config.kdl".text = ''
 
     layout {
-        gaps 12
-        center-gaps true
-        default-column-width { proportion 0.33; }
+        // You can tailor the gaps to fit dms spacing.
+        gaps 5
+        background-color "transparent"
     }
 
     layer-rule {
-      match namespace="^noctalia-overview*"
-      place-within-backdrop true
+        match namespace="^quickshell___CODE_BLOCK_1___quot;
+        place-within-backdrop true
     }
 
-    window-rule {
-      // Rounded corners for a modern look.
-      geometry-corner-radius 20
-    
-      // Clips window contents to the rounded corner boundaries.
-      clip-to-geometry true
+    layer-rule {
+        match namespace="dms:blurwallpaper"
+        place-within-backdrop true
     }
-    
-    debug {
-      // Allows notification actions and window activation from Noctalia.
-      honor-xdg-activation-with-invalid-serial
+
+    spawn-at-startup "dms" "run"
+
+    // Optional: Clipboard history
+    spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+
+    environment {
+      XDG_CURRENT_DESKTOP "niri"
+      QT_QPA_PLATFORM "wayland"
+      ELECTRON_OZONE_PLATFORM_HINT "auto"
+      QT_QPA_PLATFORMTHEME "gtk3"
+      QT_QPA_PLATFORMTHEME_QT6 "gtk3"
     }
 
     binds {
-      // Core Noctalia binds
-      Mod+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-      Mod+S { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-      Mod+Comma { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
-  
-      // Audio & Brightness
-      XF86AudioRaiseVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
-      XF86AudioLowerVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-      XF86AudioMute { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-      XF86MonBrightnessUp { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-      XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+        // Application Launchers
+        Mod+Space hotkey-overlay-title="Application Launcher" {
+            spawn "dms" "ipc" "call" "spotlight" "toggle";
+        }
+        Mod+V hotkey-overlay-title="Clipboard Manager" {
+            spawn "dms" "ipc" "call" "clipboard" "toggle";
+        }
+        Mod+M hotkey-overlay-title="Task Manager" {
+            spawn "dms" "ipc" "call" "processlist" "focusOrToggle";
+        }
+        Mod+Comma hotkey-overlay-title="Settings" {
+            spawn "dms" "ipc" "call" "settings" "focusOrToggle";
+        }
+        Mod+N hotkey-overlay-title="Notification Center" {
+            spawn "dms" "ipc" "call" "notifications" "toggle";
+        }
+        Mod+Y hotkey-overlay-title="Browse Wallpapers" {
+            spawn "dms" "ipc" "call" "dankdash" "wallpaper";
+        }
+
+        // Security
+        Mod+Alt+L hotkey-overlay-title="Lock Screen" {
+            spawn "dms" "ipc" "call" "lock" "lock";
+        }
+
+        // Audio Controls
+        XF86AudioRaiseVolume allow-when-locked=true {
+            spawn "dms" "ipc" "call" "audio" "increment" "3";
+        }
+        XF86AudioLowerVolume allow-when-locked=true {
+            spawn "dms" "ipc" "call" "audio" "decrement" "3";
+        }
+        XF86AudioMute allow-when-locked=true {
+            spawn "dms" "ipc" "call" "audio" "mute";
+        }
+
+        // Brightness Controls
+        XF86MonBrightnessUp allow-when-locked=true {
+          spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
+        }
+        XF86MonBrightnessDown allow-when-locked=true {
+          spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
+        }
     }
 
-    // ADDED: Autostart Noctalia
-    // This ensures the bar starts automatically when Niri does.
-    spawn "noctalia"
-
-    window-rule {
-        if app-id "pavucontrol" then { floating true; }
-        if app-id "blueman-manager" then { floating true; }
-    }
+    include "dms/colors.kdl"
+    include "dms/layout.kdl"
+    include "dms/alttab.kdl"
+    include "dms/binds.kdl"
   '';
 }

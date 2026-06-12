@@ -19,6 +19,7 @@
           nixpkgs.overlays = [
             amd-ai.overlays.default
             niri.overlays.default
+          ];
         }
 
         ./hosts/nixos/default.nix

@@ -76,11 +76,12 @@
         }
     }
 
-    output "eDP-1" {
+    output "Samsung Electric Company Odyssey G95SC H1AK500000" {
         mode "5120x1440@240.000"  // Set resolution and refresh rate
-        scale 1.5                // Set HiDPI scaling
+        scale 1              // Set HiDPI scaling
         position x=0 y=0         // Manually position the display
         transform "normal"           // Rotate screen ("normal", "90", "180", "270")
+        variable-refresh-rate
     }
 
     include "/home/cc/.config/niri/dms/colors.kdl"

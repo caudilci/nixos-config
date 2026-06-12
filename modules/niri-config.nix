@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  home.file.".config/niri/config.kdl".text = ''
+  environment.etc."niri/config.kdl".text = ''
 
     layout {
         // You can tailor the gaps to fit dms spacing.
@@ -76,9 +76,9 @@
         }
     }
 
-    include "dms/colors.kdl"
-    include "dms/layout.kdl"
-    include "dms/alttab.kdl"
-    include "dms/binds.kdl"
+    include "/home/cc/.config/niri/dms/colors.kdl"
+    include "/home/cc/.config/niri/dms/layout.kdl"
+    include "/home/cc/.config/niri/dms/alttab.kdl"
+    include "/home/cc/.config/niri/dms/binds.kdl"
   '';
 }

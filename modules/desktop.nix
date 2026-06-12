@@ -16,7 +16,7 @@
 
   environment.systemPackages = with pkgs; [
     kitty fuzzel yazi micro vscode git gh librewolf firefox vesktop
-    spotify expressvpn keepassxc steam prismlauncher heroic
+    starship expressvpn keepassxc steam prismlauncher heroic
     obs-studio godot freecad kicad xwayland-satellite
   ];
 

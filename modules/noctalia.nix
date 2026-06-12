@@ -5,4 +5,6 @@
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     # ... maybe other stuff
   ];
+
+  programs.noctalia.enable = true;
 }

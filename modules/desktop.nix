@@ -3,15 +3,6 @@
 
   programs.niri.enable = true;
 
-  # REMOVED: All programs.dms-shell and services.displayManager.dms-greeter blocks
-
-  # ADDED: Noctalia v5 Configuration
-  programs.noctalia = {
-    enable = true;
-    # You can add specific noctalia options here if needed,
-    # but .enable is the primary switch for the NixOS module.
-  };
-
   # Input Method (Fcitx5)
   i18n.inputMethod = {
     enable = true;

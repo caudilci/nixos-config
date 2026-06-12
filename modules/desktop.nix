@@ -50,5 +50,4 @@
     enableCalendarEvents = true;       # Calendar integration (khal)
     enableClipboardPaste = true;       # Pasting from the clipboard history (wtype)
   };
-  programs.dsearch.enable = true;
 }

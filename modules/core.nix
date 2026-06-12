@@ -29,24 +29,10 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "video" "render" ];
   };
 
-  # --- Graphical Login (Greetd + QtGreetD) ---
-  services.greetd = {
+  services.displayManager.dms-greeter = {
     enable = true;
-    settings = {
-      default_session = {
-        # This launches the qtgreetd binary
-        cmd = "${pkgs.qtgreetd}/bin/qtgreetd";
-        user = "greeter";
-      };
-    };
+    compositor.name = "niri";  # Or "hyprland" or "sway"
   };
-
-  # QtGreetD requires a configuration file to know what to launch after login
-  environment.etc."qtgreetd".text = ''
-    # This tells the greeter to start Niri with a DBus session
-    # so that Noctalia and other apps work correctly.
-    command = "dbus-run-session niri"
-  '';
 
   # --- System Services & Permissions ---
   virtualisation.docker.enable = true;

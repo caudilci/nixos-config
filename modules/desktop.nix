@@ -51,10 +51,13 @@
     enableClipboardPaste = true;       # Pasting from the clipboard history (wtype)
   };
 
-  services.greetd.enable = true;
+  services = {
+    desktopManager.plasma6.enable = true;
 
-  services.displayManager.dms-greeter = {
-    enable = true;
-    compositor.name = "niri";  # Or "hyprland" or "sway"
+  # Default display manager for Plasma
+    displayManager.plasma-login-manager.enable = true;
+
+  # Optionally enable xserver
+  # xserver.enable = true;
   };
 }

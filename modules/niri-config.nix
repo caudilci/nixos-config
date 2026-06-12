@@ -1,8 +1,5 @@
 { config, pkgs, ... }: {
   environment.etc."niri/config.kdl".text = ''
-    // --- Modern Niri Standards & Noctalia Integration ---
-
-    // REMOVED: include "dms-defaults.kdl" (DMS is gone)
 
     input {
       keyboard { xkb_layout "us" }
@@ -18,6 +15,24 @@
         gaps 12
         center-gaps true
         default-column-width { proportion 0.33; }
+    }
+
+    layer-rule {
+      match namespace="^noctalia-overview*"
+      place-within-backdrop true
+    }
+
+    window-rule {
+      // Rounded corners for a modern look.
+      geometry-corner-radius 20
+    
+      // Clips window contents to the rounded corner boundaries.
+      clip-to-geometry true
+    }
+    
+    debug {
+      // Allows notification actions and window activation from Noctalia.
+      honor-xdg-activation-with-invalid-serial
     }
 
     binds {

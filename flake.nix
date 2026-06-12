@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     niri.url = "github:niri-wm/niri";
-    noctalia.url = "github:noctalia-dev/noctalia";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/legacy-v4";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     amd-ai = {
       url = "github:noamsto/nix-amd-ai";
       flake = true;
@@ -14,6 +17,7 @@
   outputs = { self, nixpkgs, niri, noctalia, amd-ai, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
 
       modules = [
         {
@@ -22,6 +26,7 @@
             niri.overlays.default
           ];
         }
+        ./noctalia.nix
 
         ./hosts/nixos/default.nix
         ./modules/core.nix

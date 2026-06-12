@@ -24,10 +24,8 @@
           nixpkgs.overlays = [
             amd-ai.overlays.default
             niri.overlays.default
-            noctalia.overlays.default
           ];
         }
-
         ./hosts/nixos/default.nix
         ./modules/core.nix
         ./modules/graphics.nix

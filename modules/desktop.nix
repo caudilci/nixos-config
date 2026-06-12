@@ -8,11 +8,6 @@
     systemd.enable = true;
     systemd.restartIfChanged = true;
 
-    # DMS Specifics for Niri compatibility
-    # This ensures that the dms shell creates the 'dms-defaults.kdl'
-    # file that our niri-config.nix specifically looks for via 'include'.
-    niri.includes = [ "dms-defaults.kdl" ];
-
     enableSystemMonitoring = true;
     enableVPN = true;
     enableDynamicTheming = true;

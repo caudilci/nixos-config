@@ -3,7 +3,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.variables = {
-    DMS_RUN_GREETER="1 dms run";
   };
 
   boot.loader.systemd-boot.enable = true;
@@ -36,4 +35,6 @@
   # --- System Services & Permissions ---
   virtualisation.docker.enable = true;
   nixpkgs.config.allowUnfree = true;
+
+  boot.kernelParams = [ "video=DP-1:5120x1440@240" ];
 }

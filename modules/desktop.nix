@@ -10,7 +10,7 @@
     fcitx5 = {
       waylandFrontend = true;
       ignoreUserConfig = true;
-      addons = with pkgs; [ fcitx5-chewing qt6Packages.fcitx5-chinese-addons fcitx5-mozc fcitx5-rime rime-data ];
+      addons = with pkgs; [ qt6Packages.fcitx5-chinese-addons fcitx5-mozc fcitx5-rime rime-data ];
     };
   };
 
@@ -18,6 +18,7 @@
     kitty fuzzel yazi micro vscode git gh librewolf firefox vesktop
     starship expressvpn keepassxc steam prismlauncher heroic
     obs-studio godot freecad kicad xwayland-satellite greetd
+    mako xdg-desktop-portal-gtk xdg-desktop-portal-gnome gnome-keyring
   ];
 
   programs.firefox.enable = true;

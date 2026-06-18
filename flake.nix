@@ -8,9 +8,13 @@
       url = "github:noamsto/nix-amd-ai";
       flake = true;
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/legacy-v4";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, niri, amd-ai, ... }: {
+  outputs = inputs@{ self, nixpkgs, niri, amd-ai, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -27,6 +31,7 @@
         ./modules/graphics.nix
         ./modules/desktop.nix
         ./modules/ai-stack.nix
+        ./modules/noctalia.nix
         amd-ai.nixosModules.default
       ];
     };

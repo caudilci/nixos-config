@@ -17,7 +17,7 @@
   outputs = inputs@{ self, nixpkgs, niri, amd-ai, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-
+      specialArgs = { inherit inputs; };
       modules = [
         {
           nixpkgs.overlays = [

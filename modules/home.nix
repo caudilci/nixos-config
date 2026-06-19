@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 {
+    imports = [
+        inputs.mangowm.nixosModules.mango
+    ];
     home.username = "cc";
     home.homeDirectory = "/home/cc";
 
@@ -284,23 +287,23 @@
             layerrule=animation_type_open:zoom,layer_name:rofi
             layerrule=animation_type_close:zoom,layer_name:rofi
             # ... the whole configuration ...
-            '';
-                systemd.xdgAutostart = true;
-                systemd.variables = [ # this should be obsolete soon
-                "DISPLAY"
-                "WAYLAND_DISPLAY"
-                "XDG_CURRENT_DESKTOP=wlroots" # required by OBS
-                "XDG_SESSION_TYPE"
-                "NIXOS_OZONE_WL"
-                "XCURSOR_THEME"
-                "XCURSOR_SIZE"
-                ];
-                systemd.extraCommands = [ # this should be obsolete soon
-                "systemctl --user import-environment"
-                "systemctl --user reset-failed"
-                "systemctl --user start mango-session.target"
-                ];
-                autostart_sh = ''
+        '';
+        systemd.xdgAutostart = true;
+        systemd.variables = [ # this should be obsolete soon
+            "DISPLAY"
+            "WAYLAND_DISPLAY"
+            "XDG_CURRENT_DESKTOP=wlroots" # required by OBS
+            "XDG_SESSION_TYPE"
+            "NIXOS_OZONE_WL"
+            "XCURSOR_THEME"
+            "XCURSOR_SIZE"
+        ];
+        systemd.extraCommands = [ # this should be obsolete soon
+            "systemctl --user import-environment"
+            "systemctl --user reset-failed"
+            "systemctl --user start mango-session.target"
+        ];
+        autostart_sh = ''
             #...
         '';
     };

@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
-    home-manager.users.cc = { pkgs, ... }: {
+    home.username = "cc";
+    home.homeDirectory = "/home/cc";
 
     wayland.windowManager.mango = {
         enable   = true;
@@ -301,8 +302,8 @@
                 ];
                 autostart_sh = ''
             #...
-            '';
-        };
+        '';
+    };
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
@@ -312,6 +313,4 @@
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
     home.stateVersion = "26.05"; # Please read the comment before changing.
-
-  };
 }

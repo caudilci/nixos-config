@@ -6,6 +6,15 @@
   
   programs.mango.enable = true;
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    
+    # Import Mango's HM module into your user configuration
+    sharedModules = [ inputs.mango.hmModules.mango ];
+  };
+
   # Input Method (Fcitx5)
   i18n.inputMethod = {
     enable = true;

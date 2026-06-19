@@ -42,9 +42,10 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
-            # TODO replace ryan with your own username
             home-manager.users.cc = import ./modules/home.nix;
+            home-manager.sharedModules = [
+              inputs.mango.hmModules.mango
+            ];
 
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }

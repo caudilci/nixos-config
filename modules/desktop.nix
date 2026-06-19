@@ -2,7 +2,6 @@
 
   imports = [
     inputs.mangowm.nixosModules.mango
-    <home-manager/nixos>
   ];
   
   programs.mango.enable = true;

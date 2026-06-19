@@ -39,7 +39,7 @@
   hardware.firmware = [
     (pkgs.runCommandNoCC "custom-edid" {} ''
       mkdir -p $out/lib/firmware/edid
-      cp ./monitor_edid_edited.bin $out/lib/firmware/edid/monitor_edid_edited.bin
+      cp ${./monitor_edid_edited.bin} $out/lib/firmware/edid/monitor_edid_edited.bin
     '')
   ];
 

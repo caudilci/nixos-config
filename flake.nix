@@ -26,8 +26,9 @@
           nixpkgs.overlays = [
             amd-ai.overlays.default
           ];
+          mangowm.nixosModules.mango
         }
-        mangowm.nixosModules.mango
+        
         ./hosts/nixos/default.nix
         ./modules/core.nix
         ./modules/graphics.nix

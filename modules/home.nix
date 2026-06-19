@@ -1,8 +1,5 @@
-{ inputs, config, pkgs, ... }:
+{ config, pkgs, ... }:
 {
-    imports = [
-        inputs.mangowm.nixosModules.mango
-    ];
     home.username = "cc";
     home.homeDirectory = "/home/cc";
 

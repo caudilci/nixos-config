@@ -1,6 +1,9 @@
 { config, pkgs, ... }: {
-
-  programs.niri.enable = true;
+  imports = [
+    inputs.mangowm.nixosModules.mango
+  ];
+  
+  programs.mango.enable = true;
 
   # Input Method (Fcitx5)
   i18n.inputMethod = {
@@ -18,7 +21,7 @@
     starship expressvpn keepassxc steam prismlauncher heroic
     obs-studio godot freecad kicad xwayland-satellite greetd
     mako xdg-desktop-portal-gtk xdg-desktop-portal-gnome gnome-keyring
-    wlr-randr
+    wlr-randr tuigreet
   ];
 
   programs.firefox.enable = true;
@@ -35,13 +38,17 @@
   };
   security.rtkit.enable = true;
 
-  services = {
-    desktopManager.plasma6.enable = true;
-
-  # Default display manager for Plasma
-    displayManager.plasma-login-manager.enable = true;
-
-  # Optionally enable xserver
-  # xserver.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "mango";
+        user = "cc"; # auto-login on first start, no password required
+      };
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd mango";
+        user = "greeter";
+      };
+    };
   };
 }

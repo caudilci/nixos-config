@@ -12,7 +12,7 @@
     extraSpecialArgs = { inherit inputs; };
     
     # Import Mango's HM module into your user configuration
-    sharedModules = [ inputs.mango.hmModules.mango ];
+    sharedModules = [ inputs.mangowm.hmModules.mango ];
   };
 
   # Input Method (Fcitx5)

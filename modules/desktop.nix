@@ -31,7 +31,7 @@
     starship expressvpn keepassxc steam prismlauncher heroic
     obs-studio godot freecad kicad xwayland-satellite greetd
     mako xdg-desktop-portal-gtk xdg-desktop-portal-gnome gnome-keyring
-    wlr-randr tuigreet rofi lutris
+    wlr-randr tuigreet rofi lutris thunar
   ];
 
   programs.firefox.enable = true;

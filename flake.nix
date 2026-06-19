@@ -43,9 +43,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.cc = import ./modules/home.nix;
-            home-manager.sharedModules = [
-              mango.hmModules.mango
-            ];
 
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }

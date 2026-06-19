@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-    home-manager.users.cc = { pkgs, ... }: {
+    home.users.cc = { pkgs, ... }: {
 
     wayland.windowManager.mango = {
         enable   = true;

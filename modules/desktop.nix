@@ -1,4 +1,9 @@
-{ config, pkgs, ... }: {
+{ inputs, config, pkgs, ... }: {
+
+  imports = [
+    inputs.mangowm.nixosModules.mango
+    # .. other imports ...
+  ];
   
   programs.mango.enable = true;
 

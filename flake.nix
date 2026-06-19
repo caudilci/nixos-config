@@ -17,9 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, niri, amd-ai, ... }@inputs: let
-    inherit (nixpkgs) lib;
-  in {
+  outputs = inputs@{ self, nixpkgs, niri, amd-ai, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -29,7 +27,7 @@
             amd-ai.overlays.default
           ];
         }
-          mangowm.nixosModules.mango
+        
         ./hosts/nixos/default.nix
         ./modules/core.nix
         ./modules/graphics.nix

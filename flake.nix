@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    niri.url = "github:niri-wm/niri";
     amd-ai = {
       url = "github:noamsto/nix-amd-ai";
       flake = true;
@@ -26,10 +25,9 @@
         {
           nixpkgs.overlays = [
             amd-ai.overlays.default
-            niri.overlays.default
           ];
         }
-
+        mangowm.nixosModules.mango
         ./hosts/nixos/default.nix
         ./modules/core.nix
         ./modules/graphics.nix

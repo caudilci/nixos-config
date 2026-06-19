@@ -9,6 +9,8 @@
             exec=~/.config/mango/autostart.sh
             # More option see https://github.com/DreamMaoMao/mango/wiki/
 
+            # Monitor Config
+            monitorrule=width:5120,height:1440,refresh:240,scale:1.0,rr:0,vrr:1,custom:1
             # Window effect
             blur=0
             blur_layer=0

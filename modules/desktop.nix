@@ -1,5 +1,4 @@
 { config, pkgs, ... }: {
-  imports = [ ./niri-config.nix ./dms-greeter-config.nix ];
 
   programs.niri.enable = true;
 
@@ -19,6 +18,7 @@
     starship expressvpn keepassxc steam prismlauncher heroic
     obs-studio godot freecad kicad xwayland-satellite greetd
     mako xdg-desktop-portal-gtk xdg-desktop-portal-gnome gnome-keyring
+    wlr-randr
   ];
 
   programs.firefox.enable = true;

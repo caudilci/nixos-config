@@ -10,6 +10,7 @@
             # More option see https://github.com/DreamMaoMao/mango/wiki/
 
             # Monitor Config
+            monitorrule=name:DP-1,width:5120,height:1440,refresh:60,scale:1.0,rr:0,vrr:0
             # Window effect
             blur=0
             blur_layer=0
@@ -295,6 +296,7 @@
             "NIXOS_OZONE_WL"
             "XCURSOR_THEME"
             "XCURSOR_SIZE"
+            "WLR_DRM_NO_MODIFIERS=1"
         ];
         systemd.extraCommands = [ # this should be obsolete soon
             "systemctl --user import-environment"

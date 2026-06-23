@@ -36,6 +36,12 @@
   virtualisation.docker.enable = true;
   nixpkgs.config.allowUnfree = true;
 
+  hardware.firmware = [
+    (pkgs.runCommandNoCC "custom-edid" {} ''
+      mkdir -p $out/lib/firmware/edid
+      cp ${./LC49G95.bin} $out/lib/firmware/edid/LC49G95.bin
+    '')
+  ];
 
-  boot.kernelParams = [ "video=DP-1:5120x1440@240" ];
+  boot.kernelParams = [ "video=DP-1:5120x1440@240" "drm.edid_firmware=edid/LC49G95.bin" ];
 }

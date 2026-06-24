@@ -2,7 +2,6 @@
 
   imports = [
     inputs.mangowm.nixosModules.mango
-    inputs.noctalia.nixosModules.noctalia
   ];
   
   programs.mango.enable = true;

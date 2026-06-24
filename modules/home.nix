@@ -2,25 +2,52 @@
 {
     home.username = "cc";
     home.homeDirectory = "/home/cc";
+    
+    imports = [
+      inputs.noctalia.homeModules.default
+    ];
+
+    programs.noctalia = {
+      enable = true;
+
+      settings = { # This may also be a string or path to a .toml file.
+        theme = {
+          mode = "dark";
+          source = "builtin";
+          builtin = "Catppuccin";
+        };
+      };
+    };
 
     wayland.windowManager.mango = {
         enable   = true;
         settings = ''
             exec=~/.config/mango/autostart.sh
+            exec-once=noctalia
             # More option see https://github.com/DreamMaoMao/mango/wiki/
 
             # Monitor Config
             monitorrule=name:DP-1,width:5120,height:1440,refresh:60,scale:1.0,rr:0,vrr:0
             # Window effect
-            blur=0
-            blur_layer=0
-            blur_optimized=1
-            blur_params_num_passes = 2
-            blur_params_radius = 5
-            blur_params_noise = 0.02
-            blur_params_brightness = 0.9
-            blur_params_contrast = 0.9
-            blur_params_saturation = 1.2
+            blur=1
+            blur_layer=1
+            blur_optimized=0
+            blur_params_num_passes=2
+            blur_params_radius=5
+            blur_params_noise=0.02
+            blur_params_brightness=0.9
+            blur_params_contrast=0.9
+            blur_params_saturation=1.0
+
+            layer_animations=0
+            shadows=1
+            layer_shadows=1
+            shadow_only_floating=1
+            shadows_size=12
+            shadows_blur=15
+            shadows_position_x=2
+            shadows_position_y=2
+            shadowscolor=0x000000ff
 
             shadows = 0
             layer_shadows = 0
@@ -152,7 +179,7 @@
 
             # layout support:
             # tile,scroller,grid,deck,monocle,center_tile,vertical_tile,vertical_scroller
-            tagrule=id:1,layout_name:tile
+            tagrule=id:1,layout_name:scroller
             tagrule=id:2,layout_name:tile
             tagrule=id:3,layout_name:tile
             tagrule=id:4,layout_name:tile
@@ -165,6 +192,15 @@
             # Key Bindings
             # key name refer to `xev` or `wev` command output,
             # mod keys name: super,ctrl,alt,shift,none
+
+            bind=SUPER,space,spawn,noctalia msg panel-toggle launcher
+            bind=SUPER,s,spawn,noctalia msg panel-toggle control-center
+            bind=SUPER,comma,spawn,noctalia msg settings-toggle
+            bind=NONE,XF86AudioRaiseVolume,spawn,noctalia msg volume-up
+            bind=NONE,XF86AudioLowerVolume,spawn,noctalia msg volume-down
+            bind=NONE,XF86AudioMute,spawn,noctalia msg volume-mute
+            bind=NONE,XF86MonBrightnessUp,spawn,noctalia msg brightness-up
+            bind=NONE,XF86MonBrightnessDown,spawn,noctalia msg brightness-down
 
             # reload config
             bind=SUPER,r,reload_config

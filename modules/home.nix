@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 {
+    imports = [
+        inputs.noctalia.homeModules.default
+    ];
+    
     home.username = "cc";
     home.homeDirectory = "/home/cc";
 

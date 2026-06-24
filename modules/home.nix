@@ -2,10 +2,6 @@
 {
     home.username = "cc";
     home.homeDirectory = "/home/cc";
-    
-    imports = [
-      inputs.noctalia.homeModules.default
-    ];
 
     programs.noctalia = {
       enable = true;

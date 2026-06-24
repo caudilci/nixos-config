@@ -2,6 +2,7 @@
 
   imports = [
     inputs.mangowm.nixosModules.mango
+    inputs.noctalia.nixosModules.noctalia
   ];
   
   programs.mango.enable = true;
@@ -35,6 +36,7 @@
     obs-studio godot freecad kicad xwayland-satellite greetd
     mako xdg-desktop-portal-gtk xdg-desktop-portal-gnome gnome-keyring
     wlr-randr tuigreet rofi lutris thunar unzip quickshell
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   programs.firefox.enable = true;
